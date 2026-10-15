@@ -1,0 +1,10 @@
+env_AI_Model_Analysis/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.chroma/
+.env
+# big binaries: venv (541M), datasets, trained models
+*.pkl
+*.csv

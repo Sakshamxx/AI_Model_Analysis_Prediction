@@ -1,0 +1,49 @@
+# ============================================================
+# Minor Project: AI Pricing Intelligence
+# Python 3.15.0 (env: env_AI_Model_Analysis) | CPU only | installed via uv
+# Install: uv pip install --python env_AI_Model_Analysis/bin/python -r requirements.txt
+# ============================================================
+
+# ---------- BASE / NOTEBOOK (your ai_pricing_analysis.ipynb) ----------
+numpy>=1.26
+pandas>=2.2
+matplotlib>=3.8
+lazy-loader>=0.4  # lazy imports for numpy/pandas (import logic unchanged)
+jupyter>=1.1
+ipykernel>=6.29
+notebook>=7.2
+
+# ---------- BACKEND (FastAPI + Supabase, for later) ----------
+fastapi>=0.115
+uvicorn>=0.34
+pydantic>=2.10
+python-dotenv>=1.0
+supabase>=2.12
+
+# ---------- ML: Linear Regression vs RandomForest vs ANN ----------
+# ANN = PyTorch MLP (64-32-16-1), CPU build to keep download small
+scikit-learn>=1.5
+joblib>=1.4
+# torch parked on Python 3.15 (no cp315 wheels yet, max cp314).
+# Your Models.ipynb ANN uses sklearn MLPRegressor, NOT torch — unaffected.
+# Re-enable when torch ships cp315.
+# torch>=2.5
+
+# ---------- RAG (upcoming - not used yet, installed now so ready) ----------
+# Embeddings + vector store + chunking + PDF reading
+# sentence-transformers parked on Python 3.15 (needs torch, no cp315 wheels yet).
+# Re-enable together with torch + chromadb once torch ships cp315.
+# sentence-transformers>=3.0
+faiss-cpu>=1.8
+# chromadb disabled on Python 3.15 (onnxruntime has no cp315 wheels yet).
+# RAG vectors via faiss-cpu for now; re-enable chroma once onnxruntime ships cp315.
+# chromadb>=0.6
+tiktoken>=0.7
+pypdf>=4.2
+huggingface_hub>=0.26
+
+# Light RAG orchestration (keep minimal, no langchain bloat for now)
+# Uncomment when we build RAG:
+# langchain>=0.3
+# langchain-community>=0.3
+# langchain-chroma>=0.1
