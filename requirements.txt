@@ -47,3 +47,6 @@ huggingface_hub>=0.26
 # langchain>=0.3
 # langchain-community>=0.3
 # langchain-chroma>=0.1
+
+# ---------- DEV / TEST ----------
+pytest>=8

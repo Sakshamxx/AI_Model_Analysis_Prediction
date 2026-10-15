@@ -33,10 +33,20 @@ Frontend signs up/signs in with the Supabase anon key directly, then sends
 > RAG Q&A (`/rag/ask` + engine) is intentionally deferred to the last phase.
 > `rag_history` table + history reader already exist in schema/backend.
 
-## 5. Retraining later
-```sql
-select * from v_retrain_regression;  -- fresh actual prices
-select * from v_retrain_tiers;       -- human-corrected tiers
--- after retraining on them:
-update price_feedback set used_for_training = true where used_for_training = false;
+## 5. Retraining later (privileged, server-side only)
+```bash
+cd Backend
+../env_AI_Model_Analysis/bin/python retrain_export.py export   # dumps retrain_*.csv, does NOT mark consumed
+# ... retrain the .pkl models on those CSVs ...
+../env_AI_Model_Analysis/bin/python retrain_export.py mark-used  # ONLY after successful training
 ```
+Needs `SUPABASE_SERVICE_ROLE_KEY` in server `.env` (never in frontend).
+SQL-Editor equivalent: `select * from private.v_retrain_regression;`
+`select * from private.v_retrain_tiers;` then flip `used_for_training`.
+
+## 6. Security tests
+```bash
+../env_AI_Model_Analysis/bin/python -m pytest Backend/tests -v
+```
+Static RLS regression tests always run; the live cross-user test runs only
+with `SUPABASE_SERVICE_ROLE_KEY` + `TEST_USER_{A,B}_{EMAIL,PASSWORD}` set.
