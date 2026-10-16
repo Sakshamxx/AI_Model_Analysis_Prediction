@@ -109,12 +109,14 @@ def _frame(features: dict, cols: list):
     return pd.DataFrame([row], columns=cols)
 
 
-def _log(user: dict, table: str, row: dict) -> bool:
+def _log(user: dict, table: str, row: dict) -> tuple:
+    """Insert a history row as the user. Returns (row_id, logged)."""
     try:
-        user_client(user["token"]).table(table).insert({**row, "user_id": user["id"]}).execute()
-        return True
+        res = user_client(user["token"]).table(table).insert({**row, "user_id": user["id"]}).execute()
+        rows = res.data or []
+        return (rows[0].get("id"), True) if rows else (None, True)
     except Exception:
-        return False
+        return None, False
 
 
 # ---------- public ----------
@@ -153,12 +155,12 @@ def me(user: dict = Depends(get_current_user)):
 def predict_price(body: FeaturesPayload, user: dict = Depends(get_current_user)):
     _load()
     price = float(max(_reg.predict(_frame(body.features, _reg_cols))[0], 0.0))
-    logged = _log(user, "prediction_history", {
+    row_id, logged = _log(user, "prediction_history", {
         "model_name": type(_reg.named_steps["model"]).__name__,
         "features": body.features,
         "predicted_price": price,
     })
-    return {"predicted_price_per_1m_output_tokens": price, "logged": logged}
+    return {"predicted_price_per_1m_output_tokens": price, "logged": logged, "history_id": row_id}
 
 
 @app.post("/predict/tier")
@@ -167,12 +169,12 @@ def predict_tier(body: FeaturesPayload, user: dict = Depends(get_current_user)):
     frame = _frame(body.features, _reg_cols)
     tier = str(_clf.predict(frame)[0])
     proba = {str(k): float(v) for k, v in zip(_clf.classes_, _clf.predict_proba(frame)[0])}
-    logged = _log(user, "classification_history", {
+    row_id, logged = _log(user, "classification_history", {
         "model_name": type(_clf.named_steps["model"]).__name__,
         "features": body.features,
         "predicted_tier": tier,
     })
-    return {"predicted_tier": tier, "probabilities": proba, "logged": logged}
+    return {"predicted_tier": tier, "probabilities": proba, "logged": logged, "history_id": row_id}
 
 
 @app.post("/feedback/price")

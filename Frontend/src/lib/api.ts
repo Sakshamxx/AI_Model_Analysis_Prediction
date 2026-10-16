@@ -29,12 +29,14 @@ export interface SampleSchema {
 export interface PriceResult {
   predicted_price_per_1m_output_tokens: number;
   logged: boolean;
+  history_id: string | null;
 }
 
 export interface TierResult {
   predicted_tier: string;
   probabilities: Record<string, number>;
   logged: boolean;
+  history_id: string | null;
 }
 
 export const api = {

@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Logo } from './Logo';
+import { useSession } from '../hooks/useSession';
 
 const LINKS = [
   { to: '/predict', label: 'Predict' },
@@ -8,6 +9,10 @@ const LINKS = [
 ];
 
 export function Header() {
+  const { session } = useSession();
+  const email = session?.user.email ?? '';
+  const initial = (email[0] ?? '?').toUpperCase();
+
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-black/45 backdrop-blur-2xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
@@ -32,12 +37,22 @@ export function Header() {
           ))}
         </nav>
 
-        <Link
-          to="/login"
-          className="rounded-full bg-white px-5 py-2 text-[13px] font-semibold text-gray-900 transition-colors hover:bg-white/85"
-        >
-          Login
-        </Link>
+        {session ? (
+          <Link
+            to="/settings"
+            aria-label="Account settings"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] text-sm font-semibold text-white"
+          >
+            {initial}
+          </Link>
+        ) : (
+          <Link
+            to="/login"
+            className="rounded-full bg-white px-5 py-2 text-[13px] font-semibold text-gray-900 transition-colors hover:bg-white/85"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </header>
   );

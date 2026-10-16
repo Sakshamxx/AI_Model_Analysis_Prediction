@@ -1,9 +1,14 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import AeroShards from '../components/AeroShards';
 import AuthCard from '../components/AuthCard';
+import { useSession } from '../hooks/useSession';
 
 export default function AuthPage() {
   const [webgpuFailed, setWebgpuFailed] = useState(false);
+  const { session, ready } = useSession();
+
+  if (ready && session) return <Navigate to="/predict" replace />;
 
   return (
     <div className="relative h-full min-h-screen w-full overflow-hidden bg-void">
