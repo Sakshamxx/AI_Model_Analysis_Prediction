@@ -31,6 +31,9 @@ function friendlyError(message: string): string {
   if (/user already registered|already exists/i.test(message)) {
     return 'This email already has an account. Switch to Log in.';
   }
+  if (/error sending confirmation email|error sending .*email/i.test(message)) {
+    return 'Could not send the confirmation email. Turn OFF “Confirm email” in Supabase Auth, or fix the SMTP password.';
+  }
   if (/email not confirmed/i.test(message)) {
     return 'Please confirm your email first, then log in.';
   }
