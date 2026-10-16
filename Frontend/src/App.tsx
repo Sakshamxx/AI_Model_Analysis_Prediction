@@ -1,7 +1,6 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AssistantPage from './pages/AssistantPage';
 import AuthPage from './pages/AuthPage';
-import { Dock } from './components/Dock';
 import HistoryPage from './pages/HistoryPage';
 import HomePage from './pages/HomePage';
 import PredictPage from './pages/PredictPage';
@@ -10,7 +9,7 @@ import SettingsPage from './pages/SettingsPage';
 export default function App() {
   return (
     <Router>
-      <Dock />
+      {/* Dock parked for now — see src/components/Dock.tsx */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<AuthPage />} />
