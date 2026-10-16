@@ -16,12 +16,12 @@ interface Dev {
   avgCaps: number;
 }
 
-const COLORS = ['#a855f7', '#38bdf8', '#34d399', '#fbbf24', '#f472b6'];
+const COLORS = ['#9333ea', '#0ea5e9', '#10b981', '#f59e0b', '#ec4899'];
 
 export function DeveloperRadar() {
   const devs = useLandingData<Dev[]>('developers.json');
   if (!devs) {
-    return <div className="h-96 animate-pulse rounded-3xl border border-white/10 bg-white/[0.03]" />;
+    return <div className="h-96 animate-pulse rounded-3xl border border-gray-200 bg-gray-50" />;
   }
   const top = devs.slice(0, 5);
   const maxListings = Math.max(...top.map((d) => d.listings));
@@ -45,10 +45,10 @@ export function DeveloperRadar() {
   });
 
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl">
+    <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]">
       <div className="mb-2 flex flex-wrap gap-4">
         {top.map((d, i) => (
-          <span key={d.developer} className="flex items-center gap-1.5 text-xs text-white/55">
+          <span key={d.developer} className="flex items-center gap-1.5 text-xs text-gray-500">
             <span className="h-2 w-2 rounded-full" style={{ background: COLORS[i % COLORS.length] }} />
             {d.developer} · {d.listings.toLocaleString()}
           </span>
@@ -57,12 +57,12 @@ export function DeveloperRadar() {
       <div className="h-96">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart data={data} outerRadius="72%">
-            <PolarGrid stroke="rgba(255,255,255,0.12)" />
-            <PolarAngleAxis dataKey="metric" tick={{ fill: 'rgba(255,255,255,0.55)', fontSize: 12 }} />
+            <PolarGrid stroke="#e5e7eb" />
+            <PolarAngleAxis dataKey="metric" tick={{ fill: '#6b7280', fontSize: 12 }} />
             <Tooltip
               contentStyle={{
-                background: 'rgba(16,14,23,0.95)',
-                border: '1px solid rgba(255,255,255,0.12)',
+                background: '#ffffff',
+                border: '1px solid #e5e7eb',
                 borderRadius: 12,
                 fontSize: 12,
               }}
@@ -74,7 +74,7 @@ export function DeveloperRadar() {
                 dataKey={d.developer}
                 stroke={COLORS[i % COLORS.length]}
                 fill={COLORS[i % COLORS.length]}
-                fillOpacity={0.18}
+                fillOpacity={0.15}
                 strokeWidth={2}
               />
             ))}

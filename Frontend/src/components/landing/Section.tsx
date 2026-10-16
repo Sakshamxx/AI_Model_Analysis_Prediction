@@ -18,8 +18,8 @@ export function Section({
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-accent/80">{eyebrow}</p>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">{title}</h2>
+        <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-purple-600">{eyebrow}</p>
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">{title}</h2>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 28 }}

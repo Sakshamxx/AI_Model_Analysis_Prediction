@@ -27,12 +27,12 @@ export function KpiRow() {
       {items.map((item) => (
         <div
           key={item.label}
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
+          className="rounded-3xl border border-gray-200 bg-white p-6 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]"
         >
-          <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text text-3xl font-semibold tracking-tight text-transparent">
+          <p className="bg-gradient-to-b from-gray-900 to-gray-500 bg-clip-text text-3xl font-semibold tracking-tight text-transparent">
             {item.value}
           </p>
-          <p className="mt-1.5 text-[13px] text-white/45">{item.label}</p>
+          <p className="mt-1.5 text-[13px] text-gray-500">{item.label}</p>
         </div>
       ))}
     </div>

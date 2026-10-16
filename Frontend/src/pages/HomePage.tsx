@@ -22,7 +22,7 @@ export default function HomePage() {
           ) : (
             <div className="auth-fallback" aria-hidden />
           )}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/60" />
         </div>
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
@@ -75,7 +75,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="relative border-t border-white/[0.06] bg-[#08070c]">
+      <div className="relative border-t border-gray-100 bg-white">
         <Section eyebrow="Snapshot" title="Market at a glance">
           <KpiRow />
         </Section>
