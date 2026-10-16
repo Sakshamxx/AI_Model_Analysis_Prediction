@@ -218,7 +218,10 @@ export function createPipeline(gpu: Gpu, size: Size, dpr: number, initialLook: L
       });
     },
     encode(currentFrame, output) {
-      currentFrame.pass({ target: targets.backdrop, clear: CLEAR }, (pass) => pass.draw(effects.backdrop));
+      // Site adaptation: skip the studio-floor backdrop pass (graph-paper grid).
+      // The cleared backdrop target stays black, so liquid glass floats on the
+      // page's own black + particles. Backdrop target/compile retained since
+      // the shade pass still samples it.
       currentFrame.pass({ target: targets.field, clear: CLEAR }, (pass) => pass.draw(effects.field));
       currentFrame.pass({ target: targets.scene, clear: CLEAR }, (pass) => pass.draw(effects.shade));
       currentFrame.pass({ target: targets.bloom[0], clear: CLEAR }, (pass) => pass.draw(effects.bright));
