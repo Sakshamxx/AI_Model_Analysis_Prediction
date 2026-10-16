@@ -52,8 +52,8 @@ export function Footer() {
         ) : (
           <div className="auth-fallback" aria-hidden />
         )}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 pt-24">
@@ -84,20 +84,20 @@ export function Footer() {
 
         <div className="grid gap-10 px-2 pb-4 pt-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="flex items-center gap-2.5 text-lg font-semibold text-white">
+            <p className="flex items-center gap-2.5 text-lg font-semibold text-white/85">
               <Logo size={32} />
               ModelX
             </p>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/40">
               Choose the best model possible. Live pricing across thousands of AI models.
             </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-white">Explore</p>
+            <p className="text-sm font-semibold text-white/70">Explore</p>
             <ul className="mt-4 space-y-3">
               {EXPLORE.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="text-sm text-white/50 transition-colors hover:text-white">
+                  <Link to={l.to} className="text-sm text-white/40 transition-colors hover:text-white/80">
                     {l.label}
                   </Link>
                 </li>
@@ -105,14 +105,14 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold text-white">Project</p>
+            <p className="text-sm font-semibold text-white/70">Project</p>
             <ul className="mt-4 space-y-3">
               <li>
                 <a
                   href="https://github.com/Sakshamxx/AI_Model_Analysis_Prediction"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-white/50 transition-colors hover:text-white"
+                  className="inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-white/80"
                 >
                   GitHub Repository
                   <ArrowUpRight size={14} />
@@ -123,7 +123,7 @@ export function Footer() {
                   href="https://github.com/Sakshamxx"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-white/50 transition-colors hover:text-white"
+                  className="inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-white/80"
                 >
                   Developed by Saksham
                   <ArrowUpRight size={14} />
@@ -133,7 +133,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-between gap-2 border-t border-white/10 px-2 pb-2 pt-6 text-[13px] text-white/40 sm:flex-row sm:items-center">
+        <div className="flex flex-col items-start justify-between gap-2 border-t border-white/10 px-2 pb-2 pt-6 text-[13px] text-white/30 sm:flex-row sm:items-center">
           <p>© 2026 ModelX · All rights reserved</p>
           <p>
             Developed by{' '}
@@ -141,7 +141,7 @@ export function Footer() {
               href="https://github.com/Sakshamxx"
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-white/60 underline-offset-4 hover:underline"
+              className="font-medium text-white/45 underline-offset-4 hover:underline"
             >
               Saksham
             </a>

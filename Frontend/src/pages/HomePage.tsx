@@ -23,7 +23,7 @@ export default function HomePage() {
           ) : (
             <div className="auth-fallback" aria-hidden />
           )}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[46vh] bg-gradient-to-t from-white via-white/75 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[46vh] bg-gradient-to-t from-black via-black/80 to-transparent" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 to-transparent" />
         </div>
 
@@ -81,10 +81,10 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="relative bg-white">
+      <div className="relative bg-black">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[44vh] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(168,85,247,0.12),transparent)]" />
         <Particles
-          particleCount={170}
+          particleCount={220}
           particleSpread={11}
           speed={0.08}
           particleColors={['#896ABD', '#A855F7', '#c4b5fd']}
@@ -93,7 +93,7 @@ export default function HomePage() {
           twinkle={0.4}
           drift="up"
           driftSpeed={0.5}
-          opacity={0.7}
+          opacity={0.85}
           className="pointer-events-none absolute inset-0"
         />
         <div className="relative">
