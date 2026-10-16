@@ -11,3 +11,5 @@ __pycache__/
 # frontend build artifacts
 Frontend/node_modules/
 Frontend/dist/
+
+.DS_Store
