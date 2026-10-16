@@ -1,3 +1,4 @@
+import { LiquidBox } from '../liquid/LiquidStage';
 import { useLandingData } from './useLandingData';
 
 interface Kpis {
@@ -24,16 +25,13 @@ export function KpiRow() {
   ];
   return (
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-      {items.map((item) => (
-        <div
-          key={item.label}
-          className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl"
-        >
-          <p className="bg-gradient-to-b from-white to-white/60 bg-clip-text text-3xl font-semibold tracking-tight text-transparent">
+      {items.map((item, i) => (
+        <LiquidBox key={item.label} id={`kpi-${i}`} className="p-6">
+          <p className="bg-gradient-to-b from-white to-white/55 bg-clip-text text-3xl font-semibold tracking-tight text-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
             {item.value}
           </p>
-          <p className="mt-1.5 text-[13px] text-white/45">{item.label}</p>
-        </div>
+          <p className="mt-1.5 text-[13px] text-white/50">{item.label}</p>
+        </LiquidBox>
       ))}
     </div>
   );

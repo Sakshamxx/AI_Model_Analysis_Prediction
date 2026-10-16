@@ -6,6 +6,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from 'recharts';
+import { LiquidBox } from '../liquid/LiquidStage';
 import { useLandingData } from './useLandingData';
 
 interface Dev {
@@ -16,7 +17,7 @@ interface Dev {
   avgCaps: number;
 }
 
-const COLORS = ['#9333ea', '#0ea5e9', '#10b981', '#f59e0b', '#ec4899'];
+const COLORS = ['#a855f7', '#38bdf8', '#34d399', '#fbbf24', '#f472b6'];
 
 const fmtCtx = (n: number) =>
   n >= 1_000_000 ? `${(n / 1_000_000).toFixed(n % 1_000_000 === 0 ? 0 : 1)}M` : `${Math.round(n / 1000)}K`;
@@ -24,7 +25,7 @@ const fmtCtx = (n: number) =>
 export function DeveloperRadar() {
   const devs = useLandingData<Dev[]>('developers.json');
   if (!devs) {
-    return <div className="h-96 animate-pulse rounded-3xl border border-gray-200 bg-gray-50" />;
+    return <div className="h-96 animate-pulse rounded-3xl border border-white/10 bg-white/[0.02]" />;
   }
   const top = devs.slice(0, 5);
   const maxListings = Math.max(...top.map((d) => d.listings));
@@ -48,13 +49,13 @@ export function DeveloperRadar() {
   });
 
   return (
-    <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] md:p-8">
+    <LiquidBox id="chart-radar" className="p-6 md:p-8">
       <div className="grid items-center gap-8 lg:grid-cols-[300px_1fr]">
         <ol className="space-y-1">
           {top.map((d, i) => (
             <li
               key={d.developer}
-              className="flex items-center gap-4 rounded-2xl px-3 py-3 transition-colors hover:bg-gray-50"
+              className="flex items-center gap-4 rounded-2xl px-3 py-3 transition-colors hover:bg-white/[0.04]"
             >
               <span
                 className="w-7 shrink-0 text-2xl font-semibold tabular-nums"
@@ -63,8 +64,8 @@ export function DeveloperRadar() {
                 {i + 1}
               </span>
               <span className="min-w-0">
-                <span className="block truncate text-sm font-semibold text-gray-900">{d.developer}</span>
-                <span className="mt-0.5 block text-xs tabular-nums text-gray-500">
+                <span className="block truncate text-sm font-semibold text-white">{d.developer}</span>
+                <span className="mt-0.5 block text-xs tabular-nums text-white/45">
                   {d.listings.toLocaleString()} listings · ${d.medianOutput.toFixed(2)}/1M ·{' '}
                   {fmtCtx(d.medianContext)} ctx
                 </span>
@@ -76,12 +77,12 @@ export function DeveloperRadar() {
         <div className="h-80 lg:h-[420px]">
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart data={data} outerRadius="72%">
-              <PolarGrid stroke="#e5e7eb" />
-              <PolarAngleAxis dataKey="metric" tick={{ fill: '#6b7280', fontSize: 12 }} />
+              <PolarGrid stroke="rgba(255,255,255,0.14)" />
+              <PolarAngleAxis dataKey="metric" tick={{ fill: 'rgba(255,255,255,0.55)', fontSize: 12 }} />
               <Tooltip
                 contentStyle={{
-                  background: '#ffffff',
-                  border: '1px solid #e5e7eb',
+                  background: 'rgba(16,14,23,0.95)',
+                  border: '1px solid rgba(255,255,255,0.12)',
                   borderRadius: 12,
                   fontSize: 12,
                 }}
@@ -93,7 +94,7 @@ export function DeveloperRadar() {
                   dataKey={d.developer}
                   stroke={COLORS[i % COLORS.length]}
                   fill={COLORS[i % COLORS.length]}
-                  fillOpacity={0.15}
+                  fillOpacity={0.18}
                   strokeWidth={2}
                 />
               ))}
@@ -101,6 +102,6 @@ export function DeveloperRadar() {
           </ResponsiveContainer>
         </div>
       </div>
-    </div>
+    </LiquidBox>
   );
 }

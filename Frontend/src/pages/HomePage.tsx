@@ -10,6 +10,7 @@ import { KpiRow } from '../components/landing/KpiRow';
 import { PriceTrendChart } from '../components/landing/PriceTrendChart';
 import { Section } from '../components/landing/Section';
 import Particles from '../components/landing/Particles';
+import { LiquidStage } from '../components/liquid/LiquidStage';
 
 export default function HomePage() {
   const [webgpuFailed, setWebgpuFailed] = useState(false);
@@ -96,6 +97,7 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0"
         />
         <div className="relative">
+        <LiquidStage>
         <Section eyebrow="Snapshot" title="Market at a glance">
           <KpiRow />
         </Section>
@@ -111,6 +113,7 @@ export default function HomePage() {
         <Section eyebrow="Value" title="Most budget-friendly right now">
           <BudgetBoard />
         </Section>
+        </LiquidStage>
         </div>
       </div>
 
