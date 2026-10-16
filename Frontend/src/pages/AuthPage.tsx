@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AeroShards from '../components/AeroShards';
+import AuthCard from '../components/AuthCard';
 
 export default function AuthPage() {
   const [webgpuFailed, setWebgpuFailed] = useState(false);
@@ -26,9 +27,8 @@ export default function AuthPage() {
         <div className="auth-fallback" aria-hidden />
       )}
 
-      {/* auth card mounts here next */}
-      <div className="pointer-events-none absolute left-6 top-6 select-none">
-        <p className="text-sm font-semibold tracking-[0.3em] text-white/70">AI MODEL ANALYSER</p>
+      <div className="absolute inset-0 flex items-center justify-center p-4">
+        <AuthCard />
       </div>
     </div>
   );
