@@ -82,7 +82,6 @@ export default function HomePage() {
       </div>
 
       <div className="relative bg-black">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[44vh] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(168,85,247,0.12),transparent)]" />
         <Particles
           particleCount={220}
           particleSpread={11}
