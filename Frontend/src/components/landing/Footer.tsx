@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Box } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Logo } from '../Logo';
 import { OceanCanvas } from '../ocean/OceanCanvas';
