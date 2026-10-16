@@ -51,7 +51,7 @@ export function Footer() {
         ) : (
           <div className="auth-fallback" aria-hidden />
         )}
-        <div className="pointer-events-none absolute inset-0 bg-black/60" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
       </div>
 
