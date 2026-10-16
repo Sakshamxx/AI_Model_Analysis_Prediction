@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { ArrowUpRight, Box } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { OceanCanvas } from '../ocean/OceanCanvas';
 
 const EXPLORE = [
   { to: '/', label: 'Home' },
@@ -40,10 +42,21 @@ function OrbitVisual() {
 }
 
 export function Footer() {
+  const [webgpuFailed, setWebgpuFailed] = useState(false);
   return (
-    <footer className="bg-white px-4 pb-24 pt-4 sm:px-6">
-      <div className="mx-auto max-w-6xl rounded-[32px] bg-gray-100/80 px-6 py-10 md:px-12">
-        <div className="grid overflow-hidden rounded-[28px] bg-white shadow-[0_20px_60px_-24px_rgba(0,0,0,0.18)] md:grid-cols-2">
+    <footer className="relative overflow-hidden bg-black">
+      <div className="absolute inset-0">
+        {!webgpuFailed ? (
+          <OceanCanvas onError={() => setWebgpuFailed(true)} />
+        ) : (
+          <div className="auth-fallback" aria-hidden />
+        )}
+        <div className="pointer-events-none absolute inset-0 bg-black/60" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 pt-24">
+        <div className="grid overflow-hidden rounded-[28px] bg-white shadow-[0_20px_60px_-24px_rgba(0,0,0,0.6)] md:grid-cols-2">
           <div className="flex flex-col justify-center p-8 md:p-12">
             <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-gray-400">
               Live predictions
@@ -70,22 +83,22 @@ export function Footer() {
 
         <div className="grid gap-10 px-2 pb-4 pt-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700">
+            <p className="flex items-center gap-2 text-lg font-semibold text-white">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white">
                 <Box size={17} />
               </span>
               AI Model Analyser
             </p>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-gray-500">
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
               Live pricing across thousands of AI models. Predict costs and find the best value.
             </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900">Explore</p>
+            <p className="text-sm font-semibold text-white">Explore</p>
             <ul className="mt-4 space-y-3">
               {EXPLORE.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="text-sm text-gray-500 transition-colors hover:text-gray-900">
+                  <Link to={l.to} className="text-sm text-white/50 transition-colors hover:text-white">
                     {l.label}
                   </Link>
                 </li>
@@ -93,14 +106,14 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900">Project</p>
+            <p className="text-sm font-semibold text-white">Project</p>
             <ul className="mt-4 space-y-3">
               <li>
                 <a
                   href="https://github.com/Sakshamxx/AI_Model_Analysis_Prediction"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-gray-500 transition-colors hover:text-gray-900"
+                  className="inline-flex items-center gap-1.5 text-sm text-white/50 transition-colors hover:text-white"
                 >
                   GitHub Repository
                   <ArrowUpRight size={14} />
@@ -111,7 +124,7 @@ export function Footer() {
                   href="https://github.com/Sakshamxx"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-gray-500 transition-colors hover:text-gray-900"
+                  className="inline-flex items-center gap-1.5 text-sm text-white/50 transition-colors hover:text-white"
                 >
                   Developed by Saksham
                   <ArrowUpRight size={14} />
@@ -121,7 +134,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-between gap-2 border-t border-gray-200 px-2 pb-2 pt-6 text-[13px] text-gray-400 sm:flex-row sm:items-center">
+        <div className="flex flex-col items-start justify-between gap-2 border-t border-white/10 px-2 pb-2 pt-6 text-[13px] text-white/40 sm:flex-row sm:items-center">
           <p>© 2026 AI Model Analyser · All rights reserved</p>
           <p>
             Developed by{' '}
@@ -129,7 +142,7 @@ export function Footer() {
               href="https://github.com/Sakshamxx"
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-gray-500 underline-offset-4 hover:underline"
+              className="font-medium text-white/60 underline-offset-4 hover:underline"
             >
               Saksham
             </a>

@@ -9,6 +9,7 @@ import { Footer } from '../components/landing/Footer';
 import { KpiRow } from '../components/landing/KpiRow';
 import { PriceTrendChart } from '../components/landing/PriceTrendChart';
 import { Section } from '../components/landing/Section';
+import { Starfield } from '../components/landing/Starfield';
 
 export default function HomePage() {
   const [webgpuFailed, setWebgpuFailed] = useState(false);
@@ -22,7 +23,8 @@ export default function HomePage() {
           ) : (
             <div className="auth-fallback" aria-hidden />
           )}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/60" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-gradient-to-t from-white via-white/55 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 to-transparent" />
         </div>
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
@@ -76,6 +78,8 @@ export default function HomePage() {
       </div>
 
       <div className="relative border-t border-gray-100 bg-white">
+        <Starfield className="pointer-events-none absolute inset-0 h-full w-full" />
+        <div className="relative">
         <Section eyebrow="Snapshot" title="Market at a glance">
           <KpiRow />
         </Section>
@@ -91,6 +95,7 @@ export default function HomePage() {
         <Section eyebrow="Value" title="Most budget-friendly right now">
           <BudgetBoard />
         </Section>
+        </div>
       </div>
 
       <Footer />

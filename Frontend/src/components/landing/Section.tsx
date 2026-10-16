@@ -11,7 +11,7 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="relative mx-auto w-full max-w-6xl px-6 py-20">
+    <section className="relative z-10 mx-auto w-full max-w-6xl px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
