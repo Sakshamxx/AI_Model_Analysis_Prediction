@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import logoUrl from '../assets/ModelX_logo.png';
 
 export function Logo({ size = 34, rounded = 10 }: { size?: number; rounded?: number }) {
   const [missing, setMissing] = useState(false);
@@ -15,7 +16,7 @@ export function Logo({ size = 34, rounded = 10 }: { size?: number; rounded?: num
   }
   return (
     <img
-      src="/logo.png"
+      src={logoUrl}
       alt="ModelX logo"
       width={size}
       height={size}

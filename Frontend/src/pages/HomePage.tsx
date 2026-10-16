@@ -9,7 +9,7 @@ import { Footer } from '../components/landing/Footer';
 import { KpiRow } from '../components/landing/KpiRow';
 import { PriceTrendChart } from '../components/landing/PriceTrendChart';
 import { Section } from '../components/landing/Section';
-import { Starfield } from '../components/landing/Starfield';
+import Particles from '../components/landing/Particles';
 
 export default function HomePage() {
   const [webgpuFailed, setWebgpuFailed] = useState(false);
@@ -79,7 +79,19 @@ export default function HomePage() {
 
       <div className="relative bg-white">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[44vh] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(168,85,247,0.12),transparent)]" />
-        <Starfield className="pointer-events-none absolute inset-0 h-full w-full" density={7500} />
+        <Particles
+          particleCount={170}
+          particleSpread={11}
+          speed={0.08}
+          particleColors={['#896ABD', '#A855F7', '#c4b5fd']}
+          particleBaseSize={60}
+          glow={0.5}
+          twinkle={0.4}
+          drift="up"
+          driftSpeed={0.5}
+          opacity={0.7}
+          className="pointer-events-none absolute inset-0"
+        />
         <div className="relative">
         <Section eyebrow="Snapshot" title="Market at a glance">
           <KpiRow />
