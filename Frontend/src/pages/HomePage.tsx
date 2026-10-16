@@ -34,7 +34,7 @@ export default function HomePage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="text-[11px] font-medium uppercase tracking-[0.4em] text-white/50"
           >
-            AI Model Analyser
+            ModelX · Choose the best model possible
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}

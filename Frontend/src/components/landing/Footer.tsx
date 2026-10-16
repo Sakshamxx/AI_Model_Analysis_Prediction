@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { ArrowUpRight, Box } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Logo } from '../Logo';
 import { OceanCanvas } from '../ocean/OceanCanvas';
 
 const EXPLORE = [
@@ -83,14 +84,12 @@ export function Footer() {
 
         <div className="grid gap-10 px-2 pb-4 pt-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="flex items-center gap-2 text-lg font-semibold text-white">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white">
-                <Box size={17} />
-              </span>
-              AI Model Analyser
+            <p className="flex items-center gap-2.5 text-lg font-semibold text-white">
+              <Logo size={32} />
+              ModelX
             </p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
-              Live pricing across thousands of AI models. Predict costs and find the best value.
+              Choose the best model possible. Live pricing across thousands of AI models.
             </p>
           </div>
           <div>
@@ -135,7 +134,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-start justify-between gap-2 border-t border-white/10 px-2 pb-2 pt-6 text-[13px] text-white/40 sm:flex-row sm:items-center">
-          <p>© 2026 AI Model Analyser · All rights reserved</p>
+          <p>© 2026 ModelX · All rights reserved</p>
           <p>
             Developed by{' '}
             <a
