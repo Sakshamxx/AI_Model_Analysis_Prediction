@@ -8,3 +8,6 @@ __pycache__/
 # big binaries: venv (541M), datasets, trained models
 *.pkl
 *.csv
+# frontend build artifacts
+Frontend/node_modules/
+Frontend/dist/
