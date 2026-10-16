@@ -23,7 +23,7 @@ export default function HomePage() {
           ) : (
             <div className="auth-fallback" aria-hidden />
           )}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-gradient-to-t from-white via-white/55 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[46vh] bg-gradient-to-t from-white via-white/75 to-transparent" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 to-transparent" />
         </div>
 
@@ -77,8 +77,9 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="relative border-t border-gray-100 bg-white">
-        <Starfield className="pointer-events-none absolute inset-0 h-full w-full" />
+      <div className="relative bg-white">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[44vh] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(168,85,247,0.12),transparent)]" />
+        <Starfield className="pointer-events-none absolute inset-0 h-full w-full" density={7500} />
         <div className="relative">
         <Section eyebrow="Snapshot" title="Market at a glance">
           <KpiRow />
